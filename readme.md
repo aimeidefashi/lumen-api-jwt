@@ -1,4 +1,4 @@
-# 使用 Lumen 搭建 RESTfull API
+# 使用 Lumen 搭建 RESTful API
 
 ## 扩展 
 * dingo/api
