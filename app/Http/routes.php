@@ -18,12 +18,12 @@ $app->get('/', function () use ($app) {
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', [], function ($api) {
+$api->version('v1', ['namespace' => 'App\Api\Controllers\V1'], function ($api) {
 	$api->group(['middleware' => 'jwt.auth'], function($api) {
-		$api->get('/show', 'App\Http\Controllers\Controller@show');
+		$api->get('/show', 'Controller@show');
 	
 	});
-	$api->get('/index', 'App\Http\Controllers\Controller@index');
+	$api->get('/index', 'Controller@index');
 	
 
 

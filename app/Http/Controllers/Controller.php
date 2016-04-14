@@ -11,19 +11,4 @@ use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 class Controller extends BaseController
 {
     //
-    public function index(){
-    	return response()->json(
-	        array(
-	            'errcode' => 0,
-	            'errmsg' => 'status is ok'
-	        ));
-    }
-    public function show(){
-    	return response()->json(
-	        array(
-	            'errcode' => -1,
-	            'errmsg' => 'status is bad'
-	        ));
-
-    }
 }

@@ -81,7 +81,7 @@ return [
     'passwords' => [
         //
     ],
-    'model' => env('AUTH_MODEL', 'App\ManageUsers'),
+    // 'model' => env('AUTH_MODEL', 'App\ManageUsers'),
 
 
 ];
