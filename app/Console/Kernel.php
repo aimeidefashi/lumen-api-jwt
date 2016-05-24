@@ -13,10 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'BasicIT\LumenVendorPublish\VendorPublishCommand'
-        
+        //
     ];
-
 
     /**
      * Define the application's command schedule.

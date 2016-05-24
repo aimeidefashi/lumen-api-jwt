@@ -10,21 +10,23 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$app->get('/', function () use ($app) {
-    return [
-            'version' => '0.0.1'
-    ];
+
+$app->post('/auth/login', 'Auth\AuthController@postLogin');
+
+$app->group(['middleware' => 'jwt.auth'], function($app) {
+    $app->get('/', function () use ($app) {
+        return [
+            'success' => [
+                'app' => $app->version(),
+            ],
+        ];
+    });
+
+    $app->get('/user', function () use ($app) {
+        return [
+            'success' => [
+                'user' => JWTAuth::parseToken()->authenticate(),
+            ],
+        ];
+    });
 });
-
-$api = app('Dingo\Api\Routing\Router');
-
-$api->version('v1', ['namespace' => 'App\Api\Controllers\V1'], function ($api) {
-	$api->group(['middleware' => 'jwt.auth'], function($api) {
-		$api->get('/show', 'Controller@show');
-	
-	});
-	$api->get('/index', 'Controller@index');
-	
-
-
-}); 

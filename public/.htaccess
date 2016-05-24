@@ -5,6 +5,8 @@
 
     RewriteEngine On
 
+    # Apache seems to discard the Authorization header if it is not a
+    # base64 encoded user/pass combo
     RewriteCond %{HTTP:Authorization} ^(.*)
     RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 
@@ -16,5 +18,4 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-
 </IfModule>
