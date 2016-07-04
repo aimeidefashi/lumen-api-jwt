@@ -11,6 +11,7 @@
 - 克隆 或 下载这个项目
 - 执行 `composer install`
 - 创建并编辑配置文件 `.env` 
+- 创建 `storage` 并赋予权限
 - 执行 `php artisan migrate --seed`  
 
 
