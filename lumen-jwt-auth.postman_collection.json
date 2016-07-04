@@ -1,0 +1,153 @@
+{
+	"id": "fd3b754e-57aa-64cb-c487-cccfd3df5890",
+	"name": "lumen-jwt-auth",
+	"description": "",
+	"order": [
+		"807a7f20-d715-dcd0-72a2-96c549359a71",
+		"247a0acb-b39c-1855-133f-57bd4b153a80",
+		"c891e2c4-b4b2-c4b8-001e-e5d0a04180ce",
+		"09ee30ab-af6f-2f2c-2279-247bc6d5b341"
+	],
+	"folders": [],
+	"timestamp": 1448877693431,
+	"owner": "690235",
+	"remoteLink": "",
+	"public": false,
+	"published": false,
+	"requests": [
+		{
+			"id": "09ee30ab-af6f-2f2c-2279-247bc6d5b341",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYXBpLmx1bWVuLmRlbW8uY29tL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNDY3NjE4OTMyLCJleHAiOjE0Njc4MzQ5MzIsIm5iZiI6MTQ2NzYxODkzMiwianRpIjoiZGFhZDA4Nzg0N2E3Y2VhMjM2NDQ4OTg3NTBkZTBiMTEiLCJzdWIiOjJ9.CxsihHN9Ro0NRPqcKKjd65SgNkKGPVMRPtKfqHj6UjU\n",
+			"url": "http://api.lumen.demo.com/api/user/logout",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "fd3b754e-57aa-64cb-c487-cccfd3df5890",
+			"data": [
+				{
+					"key": "email",
+					"value": "lipeng@example.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "khlipeng",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "退出登录",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1467619294525,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "247a0acb-b39c-1855-133f-57bd4b153a80",
+			"headers": "",
+			"url": "http://api.lumen.demo.com/api/auth/login",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "lipeng@example.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "khlipeng",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1467615968459,
+			"name": "登录",
+			"description": "",
+			"collectionId": "fd3b754e-57aa-64cb-c487-cccfd3df5890",
+			"responses": []
+		},
+		{
+			"id": "807a7f20-d715-dcd0-72a2-96c549359a71",
+			"headers": "",
+			"url": "http://api.lumen.demo.com/api/auth/register",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "lipeng@example.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "khlipeng",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password_confirmation",
+					"value": "khlipeng",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1467620270252,
+			"name": "注册新用户",
+			"description": "",
+			"collectionId": "fd3b754e-57aa-64cb-c487-cccfd3df5890",
+			"responses": []
+		},
+		{
+			"id": "c891e2c4-b4b2-c4b8-001e-e5d0a04180ce",
+			"headers": "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vYXBpLmx1bWVuLmRlbW8uY29tL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNDY3NjE4OTMyLCJleHAiOjE0Njc4MzQ5MzIsIm5iZiI6MTQ2NzYxODkzMiwianRpIjoiZGFhZDA4Nzg0N2E3Y2VhMjM2NDQ4OTg3NTBkZTBiMTEiLCJzdWIiOjJ9.CxsihHN9Ro0NRPqcKKjd65SgNkKGPVMRPtKfqHj6UjU\n",
+			"url": "http://api.lumen.demo.com/api/user",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "email",
+					"value": "lipeng@example.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "khlipeng",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1467619230868,
+			"name": "查看我的个人信息",
+			"description": "",
+			"collectionId": "fd3b754e-57aa-64cb-c487-cccfd3df5890",
+			"responses": []
+		}
+	]
+}

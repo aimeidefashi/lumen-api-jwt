@@ -23,15 +23,14 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
+
 $app->withFacades();
-
-$app->configure('jwt');
-$app->configure('auth');
-
-class_alias(Tymon\JWTAuth\Facades\JWTAuth::class, 'JWTAuth');
-class_alias(Tymon\JWTAuth\Facades\JWTFactory::class, 'JWTFactory');
+// jwt
+class_alias('Tymon\JWTAuth\Facades\JWTAuth', 'JWTAuth');
 
 $app->withEloquent();
+
+$app->configure('jwt');
 
 /*
 |--------------------------------------------------------------------------
@@ -54,25 +53,6 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
-$app->singleton(
-    Illuminate\Contracts\Routing\ResponseFactory::class,
-    Illuminate\Routing\ResponseFactory::class
-);
-
-$app->singleton(
-    Illuminate\Auth\AuthManager::class,
-    function ($app) {
-        return $app->make('auth');
-    }
-);
-
-$app->singleton(
-    Illuminate\Cache\CacheManager::class,
-    function ($app) {
-        return $app->make('cache');
-    }
-);
-
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -84,14 +64,13 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+    App\Http\Middleware\Cors::class,
+]);
 
 $app->routeMiddleware([
-    'auth'        => App\Http\Middleware\Authenticate::class,
-    'jwt.auth'    => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-    'jwt.refresh' => Tymon\JWTAuth\Middleware\RefreshToken::class,
+    'auth' => App\Http\Middleware\Authenticate::class,
+    'jwt.api.auth' => App\Http\Middleware\GetUserFromToken::class,
 ]);
 
 /*
@@ -105,13 +84,25 @@ $app->routeMiddleware([
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+$app->register(Illuminate\Redis\RedisServiceProvider::class);
+$app->register(App\Providers\EventServiceProvider::class);
 
-// JWTAuth Dependencies
-$app->register(App\Providers\GuardServiceProvider::class);
-$app->register(Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class);
+// dingo/api
+$app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+
+//jwt
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+
+app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
+    return new Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
+});
+
+//Injecting auth
+$app->singleton(Illuminate\Auth\AuthManager::class, function ($app) {
+    return $app->make('auth');
+});
 
 /*
 |--------------------------------------------------------------------------
